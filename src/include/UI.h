@@ -13,7 +13,8 @@ size_t pitch;
 struct limine_framebuffer *framebuffer;
 uint32_t *fb_ptr;
 
-int UI_setup(void){
+
+void UI_setup(void){
     if (framebuffer_request.response == NULL || framebuffer_request.response->framebuffer_count < 1) {
         hcf();
     }
@@ -68,5 +69,11 @@ void draw_string(const char* msg, int x, int y, uint32_t color, int scale){
         xx += 8*scale + space*scale;
     }
 }
+
+void terminal(void){
+    fill_screen(BLACK);
+    
+}
+
 
 #endif

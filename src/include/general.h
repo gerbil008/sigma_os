@@ -22,4 +22,21 @@ static void hcf(void) {
     }
 }
 
+static inline void cpuid(uint32_t leaf, uint32_t *eax, uint32_t *ebx, uint32_t *ecx, uint32_t *edx) {
+    __asm__ volatile (
+        "cpuid"
+        : "=a"(*eax), "=b"(*ebx), "=c"(*ecx), "=d"(*edx)
+        : "a"(leaf)
+    );
+}
+
+int has_invariant_tsc() {
+    uint32_t eax, ebx, ecx, edx;
+
+    // Extended Function 0x80000007
+    cpuid(0x80000007, &eax, &ebx, &ecx, &edx);
+
+    return (edx & (1 << 8)) != 0;  // Bit 8 = invariant TSC flag
+}
+
 #endif

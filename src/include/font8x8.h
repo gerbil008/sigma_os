@@ -3,8 +3,6 @@
 
 #include <stdint.h>
 
-// 8x8 Bitmap Font: Großbuchstaben, Kleinbuchstaben, Zahlen, einige Sonderzeichen
-// Index 0 = ASCII 32 (Space), insgesamt 96 Zeichen (32..127)
 static const uint8_t font8x8_extended[96][8] = {
     // Space ' ' (32)
     {0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00},
